@@ -1,3 +1,4 @@
+import FAQ from "./components/commons/landing-page/faq";
 import Pricing from "./components/commons/landing-page/pricing";
 import VideoExplanation from "./components/commons/landing-page/video-explanation";
 import Header from "./components/landing-page/header";
@@ -11,7 +12,7 @@ export default function Home() {
 
       <VideoExplanation />
       <Pricing />
-      {/* <FAQ /> */}
+      <FAQ />
     </div>
   );
 }
