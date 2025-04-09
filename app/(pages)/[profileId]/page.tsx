@@ -20,7 +20,6 @@ export default async function ProfilePage({
             Faça o upgrade agora!
           </button>
         </Link>
-       
       </div>
       <div className="w-1/2 flex justify-center h-min">
         <UserCard />
