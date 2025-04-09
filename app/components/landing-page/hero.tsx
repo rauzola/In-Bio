@@ -1,3 +1,4 @@
+import TotalVisits from "../commons/total-visits";
 import UserCard from "../commons/user-card";
 import Button from "../ui/button";
 import TextInput from "../ui/text-input";
@@ -21,11 +22,11 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="w-full flex items-center justify-center bg-[radial-gradient(circle_at_50%_50%,#4B2DBB,transparent_55%)]">
+      <div className="w-full flex items-center justify-center bg-radial-gradient(circle_at_50%_50% bg-[#4B2DBB] bg-transparent_55%)">
         <div className="relative">
           <UserCard />
           <div className="absolute -bottom-[7%] -right-[45%]">
-            {/* <TotalVisits /> */}
+            <TotalVisits />
           </div>
           <div className="absolute top-[20%] -left-[45%] -z-10">
             {/* <ProjectCard /> */}
