@@ -3,21 +3,23 @@
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import "server-only";
 
-// Variáveis de ambiente
-const supabaseUrl: string = process.env.SUPABASE_URL!;
-const supabaseAnonKey: string = process.env.SUPABASE_SERVICE_ROLE_KEY!;
+// 1. Carrega as variáveis de ambiente
+const supabaseUrl     = process.env.SUPABASE_URL!;
+const serviceRoleKey  = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 
-if (!supabaseUrl || !supabaseAnonKey) {
-  throw new Error('Missing Supabase environment variables.');
+if (!supabaseUrl || !serviceRoleKey) {
+  throw new Error('🚨 As variáveis de ambiente SUPABASE_URL e SUPABASE_SERVICE_ROLE_KEY devem estar definidas.');
 }
 
-// Inicializa o cliente Supabase com a chave de função de serviço para operações do lado do servidor
-export const supabase: SupabaseClient = createClient(supabaseUrl, supabaseAnonKey, {
-  auth: {
-    persistSession: false,
-  },
-});
-
-// Exportações de atalho para banco de dados e armazenamento
-export const db = supabase;
-export const storage = supabase.storage;
+// 2. Cria o cliente para uso server-side
+export const supabase: SupabaseClient = createClient(
+  supabaseUrl,
+  serviceRoleKey,
+  {
+    auth: {
+      persistSession: false,      // Sem sessão persistente
+      autoRefreshToken: false,    // Não renova token automaticamente
+      detectSessionInUrl: false,  // Evita interceptar tokens na URL
+    },
+  }
+);
